@@ -1,0 +1,480 @@
+\documentclass[twocolumn]{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{enumitem}
+
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+\begin{document}
+
+\title{Cluster Morphology as a Systematic in ISW Measurements:\\
+Evidence from Planck SZ Clusters and SZ-Free CMB Maps}
+
+\author{Alika M.\ Parks}
+
+\date{}
+\twocolumn[
+  \begin{@twocolumnfalse}
+  \maketitle
+
+  \vspace{-10pt}
+  \noindent\textbf{Alika M.\ Parks}\\
+  Independent Researcher, Kalaheo, HI, USA\\
+  \href{mailto:alikamp@gmail.com}{alikamp@gmail.com}
+
+  \vspace{12pt}
+  \noindent\rule{\textwidth}{0.4pt}
+
+  \vspace{6pt}
+  \noindent\textbf{Abstract}\quad
+  We test whether the dynamical state of galaxy clusters correlates
+  with the Integrated Sachs-Wolfe (ISW) temperature signal measured
+  at their locations.
+  Using 942 confirmed clusters from the Planck PSZ2 catalogue with
+  the Planck SMICA SZ-free CMB map, we classify clusters as relaxed
+  or disturbed based on their residual from the $Y_{\mathrm{SZ}}$--mass
+  scaling relation.
+  Disturbed clusters show a mean CMB temperature decrement of
+  $\langle\Delta T\rangle = -5.1 \pm 2.2\;\mu\mathrm{K}$, while
+  relaxed clusters show $\langle\Delta T\rangle = +2.0 \pm 2.6\;\mu\mathrm{K}$,
+  yielding a morphology-dependent difference of
+  $-7.1 \pm 3.4\;\mu\mathrm{K}$ ($2.1\sigma$, $p = 0.037$).
+  After mass-matching the two subsamples (364 pairs,
+  KS test $p = 0.41$), the difference persists at
+  $-6.5 \pm 3.8\;\mu\mathrm{K}$ ($1.7\sigma$, $p = 0.087$),
+  indicating the effect is not driven by cluster mass.
+  Multivariate regression controlling for mass and redshift yields a
+  morphology coefficient of $-16.6 \pm 9.3\;\mu\mathrm{K}$ ($1.8\sigma$).
+  The signal is concentrated at $z < 0.2$, with the strongest
+  contribution at $0.10 < z < 0.15$ ($-28.7\;\mu\mathrm{K}$,
+  $2.8\sigma$, $p = 0.006$).
+  The sign and redshift dependence are consistent with recent reports
+  of an anomalous negative ISW effect in the nearby Universe.
+  We discuss implications for ISW stacking analyses and the
+  interpretation of the late-time ISW anomaly.
+
+  \vspace{8pt}
+  \noindent\textbf{Keywords}\quad
+  Cosmic microwave background $\cdot$
+  Integrated Sachs-Wolfe effect $\cdot$
+  Galaxy clusters $\cdot$
+  Large-scale structure $\cdot$
+  Cluster morphology $\cdot$
+  Dark energy
+
+  \vspace{4pt}
+  \noindent\rule{\textwidth}{0.4pt}
+  \vspace{12pt}
+  \end{@twocolumnfalse}
+]
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Introduction}
+\label{sec:intro}
+
+The late-time Integrated Sachs-Wolfe (ISW) effect arises when CMB
+photons traverse time-varying gravitational potentials in a
+dark-energy-dominated Universe \citep{sachs1967,crittenden1996}.
+In the standard $\Lambda$CDM cosmology, gravitational potentials
+decay at late times as dark energy suppresses structure growth,
+producing a net blueshift for photons passing through overdensities
+and a net redshift for photons crossing voids.
+Detection of the ISW effect through cross-correlation of CMB maps
+with large-scale structure tracers has been reported at
+$2$--$5\sigma$ significance
+\citep{granett2008,planckisw2016}.
+
+However, recent measurements have revealed significant anomalies.
+\citet{hansen2024} and \citet{hansen2026} report that CMB photons
+passing through nearby ($z < 0.03$) voids are significantly
+\emph{hotter} than predicted, while photons passing through nearby
+overdensities are \emph{colder} --- the opposite of the standard
+ISW prediction, at $> 6.5\sigma$ combined significance.
+Independently, DESI DR2 BAO measurements show $3.1$--$4.2\sigma$
+preference for dynamical dark energy over a cosmological constant
+\citep{desi2025}.
+These anomalies motivate a reassessment of the assumptions
+underlying ISW measurements.
+
+Standard ISW calculations assume that the gravitational potential
+$\Phi$ of a structure evolves according to the linear growth factor,
+which depends only on the background cosmology.
+All structures of the same mass and redshift are treated identically
+regardless of their internal dynamical state.
+However, galaxy clusters span a wide range of morphologies, from
+relaxed, centrally concentrated systems to highly disturbed,
+actively merging configurations.
+Disturbed clusters have flatter pressure profiles, significant
+substructure, and are undergoing rapid structural reorganisation
+\citep{lovisari2017}.
+Whether this internal dynamical state affects the rate of potential
+evolution --- and thus the ISW signal --- has not been tested.
+
+In this paper, we perform the first explicit test of whether cluster
+morphology correlates with the ISW temperature signal, using 942
+confirmed Planck SZ clusters and the Planck SMICA SZ-free CMB map.
+We classify clusters as relaxed or disturbed based on their residual
+from the $Y_{\mathrm{SZ}}$--mass scaling relation, control for mass
+via matched subsamples and multivariate regression, and examine the
+redshift dependence of the signal.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Data}
+\label{sec:data}
+
+\subsection{Cluster Catalogue}
+
+We use the Planck PSZ2 union catalogue
+\citep{planckpsz2}, which contains 1653 Sunyaev-Zeldovich-selected
+cluster candidates.
+We select confirmed clusters (VALIDATION $\geq 20$) with valid
+redshift, mass ($M_{500}$), and integrated Compton parameter
+($Y_{5R500}$), and apply a galactic latitude cut $|b| > 15^\circ$
+to reduce foreground contamination.
+This yields $N = 942$ clusters spanning $0.01 < z < 0.97$ and
+$M_{500} = 0.79$--$16.1 \times 10^{14}\,M_\odot$.
+
+\subsection{CMB Map}
+
+We use the Planck 2018 SMICA component-separated CMB temperature
+map with the SZ signal explicitly deprojected
+(\texttt{COM\_CMB\_IQU-smica-nosz\_2048\_R3.00}), at
+$N_{\mathrm{side}} = 2048$.
+This map is constructed to minimise thermal SZ contamination at
+cluster locations, which is critical for this analysis since the
+SZ decrement could mimic a negative ISW signal.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Morphology Classification}
+
+In the absence of X-ray morphology data for the full PSZ2 sample,
+we use the residual from the $Y_{\mathrm{SZ}}$--$M_{500}$ scaling
+relation as a morphology proxy.
+Disturbed clusters undergoing mergers have flatter, more extended
+pressure profiles, producing lower integrated SZ signal for their
+mass than relaxed, centrally concentrated clusters
+\citep{lovisari2017,planckesz2011}.
+We fit $\log Y_{\mathrm{SZ}} = a \log M_{500} + b$ to the full
+sample and classify clusters with negative residuals
+($Y_{\mathrm{SZ}}$ below the fit) as disturbed.
+This yields 522 disturbed and 420 relaxed clusters.
+
+\subsection{Aperture Photometry}
+
+At each cluster location, we measure the CMB temperature using
+compensated aperture photometry: the mean temperature within a
+$15'$ disk minus the mean temperature in a $15'$--$45'$ annulus.
+This filter isolates the local temperature excess or decrement
+associated with the cluster potential while subtracting the local
+CMB background.
+
+\subsection{Mass Matching}
+
+To control for mass dependence, we construct matched subsamples by
+pairing each disturbed cluster with the nearest relaxed cluster in
+$M_{500}$ within a 20\% tolerance.
+This yields 364 matched pairs with statistically indistinguishable
+mass distributions (KS test $p = 0.41$).
+
+\subsection{Statistical Tests}
+
+We apply three complementary tests:
+(1) Welch's $t$-test comparing the mean $\Delta T$ of relaxed and
+disturbed subsamples;
+(2) paired $t$-test on the 364 mass-matched pairs;
+(3) multivariate OLS regression of $\Delta T$ on $M_{500}$,
+redshift $z$, a binary morphology indicator, and a mass--morphology
+interaction term.
+All significance estimates are cross-checked with 10,000-resample
+bootstrap confidence intervals.
+
+\subsection{LLM Disclosure}
+
+Large language model assistance (Claude, Anthropic) was used for
+pipeline development and manuscript preparation.
+All scientific decisions, analysis methodology, and interpretation
+are solely the work of the authors.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Results}
+\label{sec:results}
+
+\subsection{Full Sample}
+
+The mean CMB temperature at relaxed cluster locations is
+$\langle\Delta T\rangle_{\mathrm{rel}} = +2.0 \pm 2.6\;\mu$K
+($n = 420$), while at disturbed cluster locations it is
+$\langle\Delta T\rangle_{\mathrm{dis}} = -5.1 \pm 2.2\;\mu$K
+($n = 522$).
+The difference of $-7.1 \pm 3.4\;\mu$K is significant at $2.1\sigma$
+($p = 0.037$).
+Bootstrap resampling yields a 95\% confidence interval of
+$[-13.9, -0.6]\;\mu$K, excluding zero.
+
+\subsection{Mass-Matched Sample}
+
+After mass matching (364 pairs, KS $p = 0.41$), the difference
+persists: $-6.5 \pm 3.8\;\mu$K ($1.7\sigma$, $p = 0.087$;
+paired $t$-test: $1.7\sigma$, $p = 0.088$).
+The reduction in significance relative to the full sample is
+consistent with the loss of statistical power from reduced sample
+size rather than removal of a mass-driven effect.
+The bootstrap 95\% CI for the mass-matched sample is
+$[-14.0, +1.0]\;\mu$K.
+
+\subsection{Regression}
+
+Multivariate regression controlling for $M_{500}$ and $z$
+simultaneously yields a morphology coefficient of
+$-16.6 \pm 9.3\;\mu$K ($1.8\sigma$, $p = 0.073$).
+Neither $M_{500}$ ($0.3\sigma$) nor $z$ ($0.9\sigma$) is
+individually significant, indicating that the morphology indicator
+captures information not explained by mass or redshift alone.
+
+\begin{table}[h]
+\centering
+\caption{Regression results: $\Delta T = \beta_0 + \beta_1 M_{500}
++ \beta_2 z + \beta_3\,\mathrm{disturbed} +
+\beta_4 (M_{500} \times \mathrm{disturbed})$.}
+\label{tab:regression}
+\begin{tabular}{lrrrr}
+\toprule
+Parameter & Est. & SE & $t$ & $p$ \\
+\midrule
+Intercept & 3.06 & 5.64 & 0.54 & 0.587 \\
+$M_{500}$ & 0.41 & 1.22 & 0.34 & 0.736 \\
+$z$ & $-16.71$ & 18.40 & $-0.91$ & 0.364 \\
+Disturbed & $-16.63$ & 9.28 & $-1.79$ & 0.073 \\
+$M_{500} \times$ Dist. & 2.46 & 1.97 & 1.25 & 0.212 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Redshift Dependence}
+
+Table~\ref{tab:zbins} presents the morphology--ISW difference in
+redshift bins.
+The signal is concentrated at $z < 0.2$, with the strongest
+individual bin at $0.10 < z < 0.15$: $\Delta T_{\mathrm{dis}} -
+\Delta T_{\mathrm{rel}} = -28.7\;\mu$K at $2.8\sigma$ ($p = 0.006$).
+
+\begin{table}[h]
+\centering
+\caption{Morphology--ISW difference by redshift.}
+\label{tab:zbins}
+\begin{tabular}{lrrrrl}
+\toprule
+$z$ range & $n_r$ & $n_d$ & $\Delta$ ($\mu$K) & $\sigma$ & \\
+\midrule
+$[0.05, 0.10)$ & 107 & 44 & $-10.0$ & 1.2 & \\
+$[0.10, 0.15)$ & 51 & 45 & $-28.7$ & 2.8 & $**$ \\
+$[0.15, 0.20)$ & 57 & 65 & $-8.8$ & 0.9 & \\
+$[0.20, 0.30)$ & 82 & 141 & $+5.3$ & 0.7 & \\
+$[0.30, 0.50)$ & 73 & 157 & $-4.4$ & 0.6 & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The redshift concentration of the signal at $z < 0.2$ is notable
+because it coincides with the redshift range where
+\citet{hansen2026} report the anomalous negative ISW effect.
+At $z > 0.2$, the morphology--ISW difference is consistent with
+zero.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Interpretation}
+
+The principal finding is that cluster dynamical state correlates
+with the CMB temperature measured at cluster locations, even after
+controlling for cluster mass and using an SZ-deprojected CMB map.
+Disturbed clusters --- those with SZ signal below the $Y$--$M$
+scaling relation, indicative of merging or extended pressure
+profiles --- show systematically colder CMB temperatures than
+relaxed clusters.
+
+The sign of the effect is striking: standard ISW predicts
+\emph{positive} $\Delta T$ at overdensities (potentials decaying
+$\to$ net blueshift), yet disturbed clusters show \emph{negative}
+$\Delta T$.
+This sign reversal is consistent with the hypothesis that
+the gravitational potentials of dynamically disturbed structures
+evolve differently from relaxed systems --- either decaying more
+rapidly, or in extreme cases, temporarily \emph{deepening} as
+substructure merges and the potential well reorganises.
+
+This is consistent with the results of \citet{hansen2026}, who
+find cold overdensities at $z < 0.03$ and interpret their results
+as evidence for a negative ISW effect in the nearby Universe.
+Our analysis extends the redshift range to $z \sim 0.15$ and
+provides a physical mechanism: the morphological state of the
+overdensity modulates the ISW signal.
+
+\subsection{Connection to Dynamical Dark Energy}
+
+DESI DR2 BAO measurements prefer dynamical dark energy at
+$3.1$--$4.2\sigma$ \citep{desi2025}.
+If the dark energy equation of state evolves with time,
+the growth factor and hence the rate of potential decay also
+evolve, producing a modified ISW signal.
+Our results suggest an additional, complementary effect: even
+within a fixed cosmological model, the \emph{internal} dynamical
+state of structures modulates the ISW signal.
+A complete treatment of the late-time ISW may need to account
+for both cosmological evolution and structural morphology.
+
+\subsection{Relation to the Structural-Geometric Framework}
+
+This analysis was motivated by the Parks Node Ejection Protocol
+(PNEP), a geometric diagnostic for gravitational hierarchy decay
+in few-body stellar systems \citep{parks2026}.
+PNEP demonstrates that the internal geometry of a gravitational
+system --- specifically, the distance hierarchy among bodies
+sampled at dynamically privileged moments --- encodes information
+about the system's stability that scalar measures (total mass,
+energy) miss.
+The present work tests the cosmological analog: whether the
+internal geometry (morphology) of a galaxy cluster encodes
+information about its potential evolution that mass alone misses.
+The affirmative result, while at modest significance, supports the
+broader principle that structural geometry matters for
+gravitational potential evolution across scales.
+
+\subsection{Limitations}
+
+The $Y$--$M$ residual morphology proxy, while physically
+motivated, is an imperfect indicator of dynamical state.
+X-ray morphology parameters (concentration, centroid shift)
+from dedicated observations \citep{lovisari2017} would provide
+a more direct classification.
+Our analysis uses such parameters for only ${\sim}120$ clusters;
+extending this to the full PSZ2 sample would substantially
+increase statistical power.
+
+The mass-matched result ($1.7\sigma$) does not reach conventional
+significance.
+With 364 pairs and ${\sim}50\;\mu$K noise per cluster, we are at
+the statistical limit of the current sample.
+Forthcoming cluster catalogues from SPT-3G, AdvACT, and the
+Simons Observatory will increase sample sizes by an order of
+magnitude.
+
+The aperture photometry approach is standard but coarse.
+Matched-filter or optimal-filter techniques adapted to the cluster
+angular profile would improve signal extraction.
+
+We have not modelled the theoretical ISW signal from $N$-body
+simulations for comparison.
+A full treatment would predict $\Delta T_{\mathrm{ISW}}$ for
+relaxed and disturbed clusters from hydrodynamical simulations
+(e.g., cosmoOWLS, BAHAMAS) and compare with observations.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Conclusions}
+\label{sec:conclusions}
+
+We report the first test of morphology-dependent ISW signal from
+galaxy clusters using Planck data.
+Our principal findings are:
+
+\begin{enumerate}[nosep]
+  \item Disturbed clusters show a mean CMB temperature
+        $7.1 \pm 3.4\;\mu$K colder than relaxed clusters
+        ($2.1\sigma$, $p = 0.037$) in the SZ-free Planck CMB map.
+
+  \item The signal survives mass matching ($-6.5\;\mu$K at
+        $1.7\sigma$, 364 pairs) and multivariate regression
+        controlling for mass and redshift ($-16.6\;\mu$K at
+        $1.8\sigma$), indicating it is not driven by cluster mass.
+
+  \item The signal is concentrated at $z < 0.2$, with the
+        strongest contribution at $0.10 < z < 0.15$ ($-28.7\;\mu$K,
+        $2.8\sigma$, $p = 0.006$).
+
+  \item The sign (cold disturbed overdensities) is consistent with
+        the anomalous negative ISW reported by \citet{hansen2026}
+        at $z < 0.03$.
+\end{enumerate}
+
+While the mass-matched significance ($1.7\sigma$) does not reach
+the threshold for a definitive detection, the consistency of the
+signal across multiple analysis methods, its concentration at
+low redshift, and its concordance with independent ISW anomaly
+measurements motivate further investigation with larger cluster
+samples and dedicated X-ray morphology data.
+
+All analysis code is publicly available at
+\url{https://github.com/alikamp/Parks-Node-Ejection-Protocol}.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section*{Statements and Declarations}
+
+\paragraph{Competing Interests.}
+The authors declare no competing interests.
+
+\paragraph{Data Availability.}
+This work uses publicly available data from the Planck Legacy
+Archive and the Planck PSZ2 catalogue.
+Analysis code is available at
+\url{https://github.com/alikamp/Parks-Node-Ejection-Protocol}.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\bibliographystyle{aasjournal}
+\begin{thebibliography}{99}
+
+\bibitem[Crittenden \& Turok(1996)]{crittenden1996}
+Crittenden, R.~G., \& Turok, N.\ 1996, Physical Review Letters, 76, 575
+
+\bibitem[DESI Collaboration(2025)]{desi2025}
+DESI Collaboration 2025, arXiv:2503.14738
+
+\bibitem[Granett et al.(2008)]{granett2008}
+Granett, B.~R., Neyrinck, M.~C., \& Szapudi, I.\ 2008, ApJ, 683, L99
+
+\bibitem[Hansen et al.(2024)]{hansen2024}
+Hansen, F.~K., et al.\ 2024, A\&A, 681, L7
+
+\bibitem[Hansen et al.(2026)]{hansen2026}
+Hansen, F.~K., et al.\ 2026, arXiv:2506.08832
+
+\bibitem[Lovisari et al.(2017)]{lovisari2017}
+Lovisari, L., et al.\ 2017, ApJ, 846, 51
+
+\bibitem[Naidoo(2023)]{naidoo2023}
+Naidoo, K.\ 2023, arXiv:2308.13617
+
+\bibitem[Parks(2026)]{parks2026}
+Parks, A.~M.\ 2026, submitted to CMDA
+
+\bibitem[Planck Collaboration(2011)]{planckesz2011}
+Planck Collaboration 2011, A\&A, 536, A8
+
+\bibitem[Planck Collaboration(2016a)]{planckpsz2}
+Planck Collaboration 2016a, A\&A, 594, A27
+
+\bibitem[Planck Collaboration(2016b)]{planckisw2016}
+Planck Collaboration 2016b, A\&A, 594, A21
+
+\bibitem[Sachs \& Wolfe(1967)]{sachs1967}
+Sachs, R.~K., \& Wolfe, A.~M.\ 1967, ApJ, 147, 73
+
+\end{thebibliography}
+
+\end{document}

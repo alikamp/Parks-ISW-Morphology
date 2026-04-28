@@ -1,0 +1,44 @@
+{
+  "data_type": "real_planck",
+  "cmb_map": "SMICA no-SZ",
+  "sz_correction": false,
+  "morphology_method": "Y-M_residual",
+  "N_total": 942,
+  "N_relaxed": 420,
+  "N_disturbed": 522,
+  "full_sample": {
+    "mean_DT_relaxed": 2.043,
+    "mean_DT_disturbed": -5.089,
+    "difference": -7.132,
+    "difference_error": 3.415,
+    "t_statistic": -2.086,
+    "p_value": 0.037228,
+    "significance_sigma": 2.1,
+    "bootstrap_95CI": [-13.907, -0.604]
+  },
+  "mass_matched": {
+    "N_pairs": 364,
+    "mean_DT_relaxed": 1.652,
+    "mean_DT_disturbed": -4.830,
+    "difference": -6.483,
+    "difference_error": 3.772,
+    "t_statistic": -1.716,
+    "p_value": 0.086542,
+    "significance_sigma": 1.7,
+    "paired_t": -1.712,
+    "paired_p": 0.087828,
+    "bootstrap_95CI": [-13.973, 0.976]
+  },
+  "regression": {
+    "morphology_coefficient": -16.634,
+    "morphology_se": 9.280,
+    "morphology_sigma": 1.8,
+    "R_squared": 0.0067
+  },
+  "redshift_binned": {
+    "z_centers": [0.075, 0.125, 0.175, 0.25, 0.4],
+    "differences": [-10.03, -28.70, -8.76, 5.34, -4.44],
+    "errors": [8.56, 10.03, 9.37, 7.68, 7.69],
+    "significances": [1.2, 2.8, 0.9, 0.7, 0.6]
+  }
+}
