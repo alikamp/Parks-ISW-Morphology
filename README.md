@@ -137,6 +137,29 @@ Scripts: `scripts/aperture_test.py`
 
 ---
 
+### Low-ℓ Cutoff Test — Scale Independence
+
+Following a query from a lead researcher in ISW cosmology, we tested whether the signal is sensitive to the removal of large-scale CMB modes (low multipoles), applying cutoffs at ℓ = 5, 10, 20, 30, and 50.
+
+#### Key bin z = [0.10, 0.15):
+
+| ℓ cutoff | Removes scales | Diff (μK) | Significance |
+|----------|---------------|-----------|-------------|
+| None (baseline) | — | −28.7 | 2.8σ (p=0.006) |
+| ℓ > 5 | > 36° | −25.0 | 2.5σ |
+| ℓ > 10 | > 18° | −25.0 | 2.5σ |
+| ℓ > 20 | > 9° | −25.0 | 2.5σ |
+| ℓ > 30 | > 6° | −25.0 | 2.5σ |
+| ℓ > 50 | > 4° | −25.1 | 2.5σ |
+
+The signal is robust to scale selection. Removing ℓ < 5 produces a small drop (~3.7 μK), likely from dipole/quadrupole bias. Beyond that, the result is completely insensitive to the cutoff — the signal lives entirely at cluster angular scales, not in large-scale CMB modes.
+
+This behavior differs from the Hansen et al. ISW anomaly, where low-ℓ filtering *enhanced* the signal. The two effects appear to operate at different angular scales — theirs at the void/supercluster level, ours at the individual cluster level — suggesting they are complementary rather than redundant.
+
+Scripts: `scripts/lowl_test.py`
+
+---
+
 ## Key Conclusions
 
 1. Disturbed clusters show a CMB temperature **7 μK colder** than relaxed clusters of the same mass (2.1σ, p = 0.037)
@@ -144,7 +167,8 @@ Scripts: `scripts/aperture_test.py`
 3. **All four independent morphology indicators** show the same sign
 4. The signal **survives** bin stability testing, bootstrap (zero excluded from 95% CI), mass matching, and null testing (p = 0.003)
 5. The signal **extends beyond the virial radius**, weakening gradually from 2.2 to 4.4 Mpc — consistent with a gravitational potential origin
-6. The sign and redshift dependence are consistent with independent reports of an anomalous negative ISW effect in the nearby Universe
+6. The signal is **scale-independent**: removing large-scale CMB modes (ℓ < 5 through ℓ < 50) has negligible effect, confirming the signal lives at cluster angular scales
+7. The sign and redshift dependence are consistent with independent reports of an anomalous negative ISW effect in the nearby Universe
 
 ---
 
@@ -172,7 +196,8 @@ All data is publicly available:
 ├── scripts/
 │   ├── step3_diego.py              # Extreme cuts + independent indicators
 │   ├── step4_confirm.py            # Confirmation tests (bin stability, bootstrap, null)
-│   └── aperture_test.py            # Aperture scaling test
+│   ├── aperture_test.py            # Aperture scaling test
+│   └── lowl_test.py                # Low-ℓ cutoff test
 ├── results/
 │   └── results_v2.json             # Core results
 └── LICENSE
@@ -187,6 +212,7 @@ python step2_analyze_v2.py
 python scripts/step3_diego.py
 python scripts/step4_confirm.py
 python scripts/aperture_test.py
+python scripts/lowl_test.py
 ```
 
 ## Author
