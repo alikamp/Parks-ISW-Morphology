@@ -2,6 +2,14 @@
 """
 ISW Morphology — Low-ℓ Cutoff Test
 ====================================
+# ============================================================
+# CHANGELOG
+# ============================================================
+# 2026-05-19 - Updates per Frode Hansen / Diego Lambas feedback
+#   - Extended l_cut range to include 100 and 200
+#     per Frode's request to fully characterize scale dependence
+#     and clarify relationship to Hansen et al. effect
+# ============================================================
 
 Diego's suggestion: apply a low-ℓ cutoff to the CMB map
 (as in Hansen et al.) and check if significance changes.
