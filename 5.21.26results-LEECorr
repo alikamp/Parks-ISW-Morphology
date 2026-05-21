@@ -1,0 +1,90 @@
+{
+  "pipeline": {
+    "N_sims": 10000,
+    "NSIDE": 1024,
+    "aperture_disk_arcmin": 15.0,
+    "aperture_ann_arcmin": 45.0,
+    "galactic_cut_deg": 15.0,
+    "N_clusters": 943,
+    "N_disturbed": 522,
+    "N_relaxed": 421,
+    "runtime_hours": 5.14,
+    "lee_z_bins": 6
+  },
+  "observed": {
+    "full_sample": -8.45,
+    "key_bin": -27.57,
+    "broad_bin": -15.26
+  },
+  "significance": {
+    "A_full_lcdm": {
+      "label": "TEST A: Full sample - \u039bCDM null",
+      "observed": -8.45,
+      "null_mean": -0.03,
+      "null_std": 3.59,
+      "p_two_tailed": 0.018,
+      "p_one_tailed": 0.0089,
+      "sigma_equivalent": 2.37,
+      "N_sims": 10000,
+      "N_exceed": 180
+    },
+    "B_key_lcdm": {
+      "label": "TEST B: z=[0.10,0.15) - \u039bCDM null",
+      "observed": -27.57,
+      "null_mean": -0.03,
+      "null_std": 9.89,
+      "p_two_tailed": 0.0056,
+      "p_one_tailed": 0.0032,
+      "sigma_equivalent": 2.77,
+      "N_sims": 10000,
+      "N_exceed": 56
+    },
+    "C_broad_lcdm": {
+      "label": "TEST C: z=[0.05,0.20) - \u039bCDM null",
+      "observed": -15.26,
+      "null_mean": -0.01,
+      "null_std": 5.57,
+      "p_two_tailed": 0.0074,
+      "p_one_tailed": 0.0038,
+      "sigma_equivalent": 2.68,
+      "N_sims": 10000,
+      "N_exceed": 74
+    },
+    "D_shuffle_full": {
+      "label": "TEST D: Full sample - Morphology shuffle",
+      "observed": -8.45,
+      "null_mean": 0.08,
+      "null_std": 3.97,
+      "p_two_tailed": 0.0334,
+      "p_one_tailed": 0.0167,
+      "sigma_equivalent": 2.13,
+      "N_sims": 10000,
+      "N_exceed": 334
+    },
+    "D_shuffle_key": {
+      "label": "TEST D: z=[0.10,0.15) - Morphology shuffle",
+      "observed": -27.57,
+      "null_mean": 0.1,
+      "null_std": 11.32,
+      "p_two_tailed": 0.0148,
+      "p_one_tailed": 0.0068,
+      "sigma_equivalent": 2.44,
+      "N_sims": 10000,
+      "N_exceed": 148
+    },
+    "E_lee_corrected": {
+      "label": "Frode LEE correction (max-bin)",
+      "observed": -27.57,
+      "p_lee": 0.014,
+      "sigma_lee": 2.46,
+      "N_sims": 10000,
+      "N_exceed": 140,
+      "method": "Max |signal| across 6 z-bins vs observed best-bin"
+    }
+  },
+  "validation": {
+    "null_mean_full": -0.026,
+    "null_mean_key": -0.035,
+    "null_centered": true
+  }
+}
