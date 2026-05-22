@@ -201,7 +201,7 @@ Signal amplitude is established at −28.7 μK in the key bin and −48.42 μK Q
 
 ## Active Collaboration
 
-Active correspondence with leading CMB and large-scale structure researchers. Zoom scheduled May 2026. Joint publication in preparation.
+Active correspondence with leading CMB and large-scale structure researchers.
 
 *Last updated: May 22, 2026*
 
