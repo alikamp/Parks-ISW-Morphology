@@ -250,6 +250,31 @@ dx12_v3_smica_cmb_mc_XXXXX_raw.fits via PLA authenticated access.
 FFP10 significance consistent with ΛCDM result (2.46σ LEE-corrected).
 Real Planck instrumental noise and systematics do not explain the signal.
 
+## Mass-Split and Jackknife Analysis (2026-05-24)
+
+### Jackknife Test — Key Bin z=[0.10,0.15)
+Leave-one-out jackknife over all 47 disturbed and 51 relaxed clusters in the key bin.
+
+| Metric | Disturbed JK | Relaxed JK |
+|--------|-------------|-----------|
+| Mean signal | −29.52 μK | −29.52 μK |
+| Std | 1.07 μK | 0.99 μK |
+| Min signal | −32.54 μK | −32.38 μK |
+| Max signal | −27.74 μK | −27.49 μK |
+| All negative | 100% | 100% |
+
+Signal is stable to removal of any single cluster. Not driven by outliers.
+Most influential cluster removal changes signal by only 3.01 μK.
+
+### Mass-Split Analysis — Key Bin
+| Mass range | n_dis | n_rel | ΔT (μK) | σ |
+|-----------|-------|-------|---------|---|
+| Low mass ≤3.41×10¹⁴ | 39 | 12 | −12.26 | 0.90 |
+| High mass >3.41×10¹⁴ | 8 | 39 | −37.63 | 2.23 |
+
+Signal stronger in high mass clusters — consistent with deeper potential wells
+producing larger ISW amplitude.
+
 ---
 
 ## Complete Validation Suite
