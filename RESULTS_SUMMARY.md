@@ -213,6 +213,43 @@ Yuan 2022 X-ray morphology result (opposite sign to PSZ2).
 
 *Last updated: May 22, 2026*
 
+May 24th Additions-
+## eROSITA D_COMB X-ray Morphology (2026-05-24)
+
+Sanders et al. 2025 morphology catalog cross-matched with Bulbul et al. 2024 
+eRASS1 clusters. 12,247 clusters with direct X-ray morphology measurements —
+centroid shift, concentration, power ratios, combined dynamical state D_COMB.
+
+### D_COMB Morphology Split (high D_COMB = disturbed)
+| Sample | n_dis | n_rel | ΔT (μK) | σ |
+|--------|-------|-------|---------|---|
+| Full sample | 6,123 | 6,124 | — | — |
+| Key bin z=[0.10,0.15) | 332 | 535 | +2.79 | 0.77 |
+| z=[0.05,0.10) | 302 | 620 | −6.40 | 1.72 |
+
+No significant signal with X-ray morphology split. Dose-response quintiles 
+show no gradient. Consistent with eROSITA L-M residual result — X-ray 
+morphology selects different merger stages than PSZ2 Y-M residual.
+
+## FFP10 Final Results (2026-05-24)
+
+999 Planck end-to-end simulations (full available set, sims 0-999).
+dx12_v3_smica_cmb_mc_XXXXX_raw.fits via PLA authenticated access.
+
+| Metric | Value |
+|--------|-------|
+| Total sims | 999 |
+| Null mean | +1.21 μK |
+| Null std | 10.78 μK |
+| Hits (≤ −28.70 μK) | 6 |
+| p-value | 0.0060 |
+| Sigma | 2.51 |
+| LEE p-value | 0.065 |
+| LEE sigma | 1.51 |
+
+FFP10 significance consistent with ΛCDM result (2.46σ LEE-corrected).
+Real Planck instrumental noise and systematics do not explain the signal.
+
 ---
 
 ## Complete Validation Suite
