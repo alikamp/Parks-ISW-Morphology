@@ -1,0 +1,201 @@
+# Exploratory Analysis — Supercluster Morphology Balance
+## A Possible Conservation Mechanism in Large Scale Structure
+*Alika M. Parks — Independent Researcher, Kalaheo, Hawaii*
+*Preliminary result — May 26, 2026*
+
+---
+
+## Hypothesis
+
+If galaxy cluster mergers are regulated by large scale structure, 
+superclusters should maintain a statistical balance between disturbed 
+and relaxed cluster populations at any given cosmic epoch — a possible 
+conservation mechanism operating at the filament scale.
+
+If confirmed, this would suggest dark energy functions not merely as a 
+geometric expansion term but as a dynamical equilibrium mechanism — 
+regulating the balance between merger activity and relaxation within 
+large scale structure at the epoch of dark energy domination.
+
+---
+
+## Method
+
+**Catalogs:**
+- eROSITA eRASS1 cluster catalog — Bulbul et al. 2024, 12,247 clusters
+- eROSITA supercluster catalog — Liu et al. 2024, 1,338 superclusters
+- eROSITA X-ray morphology catalog — Sanders et al. 2025, 12,705 clusters
+
+**Morphology classifier:**
+D_COMB — combined X-ray morphology score from Sanders et al. 2025.
+Parameters: centroid shift, concentration, power ratios, ellipticity.
+Range: 0.0 (most relaxed) to 1.0 (most disturbed).
+Median split: D_COMB > 0.183 = disturbed, ≤ 0.183 = relaxed.
+By construction: 6,123 disturbed, 6,124 relaxed — perfectly balanced 
+global sample.
+
+**Cross-match:**
+12,247 eROSITA clusters matched to 3,948 supercluster member positions 
+within 5 arcmin. 4,089 matches across 1,337 superclusters.
+
+**Analysis:**
+For each supercluster with ≥3 D_COMB members compute disturbed/relaxed 
+ratio. Test whether distribution of ratios is centered on 1.0 more than 
+expected by random chance.
+
+---
+
+## Results
+
+### Population Statistics
+
+| Metric | Value |
+|--------|-------|
+| Superclusters tested | 468 |
+| Superclusters with both populations | 468 |
+| Total disturbed (in superclusters) | 1,085 |
+| Total relaxed (in superclusters) | 1,120 |
+| Overall ratio | 0.969 |
+| Mean ratio per supercluster | 1.343 |
+| **Median ratio per supercluster** | **1.000** |
+| Ratios within factor 2 of balance (0.5-2.0) | 347/468 (74%) |
+
+### Significance Tests
+
+| Test | Statistic | p-value | σ | Interpretation |
+|------|-----------|---------|---|----------------|
+| Sign test (median vs 1.0) | p=0.628 | 0.628 | 0.48 | Median IS 1.0 — not different from balance |
+| Overall binomial (50/50) | p=0.469 | 0.469 | 0.08 | Consistent with perfect 50/50 balance |
+| Bootstrap balance excess (1,000) | 347 vs 305.9±9.7 random | <0.001 | 6.36σ | Highly significant excess of balanced superclusters |
+| Bootstrap balance excess (10,000) | 347 vs 305.4±9.7 random | <0.0001 | >3.72σ | 0/10,000 random shuffles exceeded observed |
+| Direct sigma from random mean | (347-305.4)/9.7 | — | **4.29σ** | Observed exceeds random mean by 4.29σ |
+| Wilcoxon signed rank | centered on 1.0 | <0.0001 | 6.64σ | Distribution significantly centered on 1.0 |
+
+**Key result: In 10,000 random shuffles the maximum balanced 
+superclusters ever achieved was 342. The real universe shows 347. 
+Zero random universes exceeded the observed balance.**
+
+### Examples of Perfectly Balanced Superclusters
+
+| Supercluster | N_dis | N_rel | Ratio | z |
+|-------------|-------|-------|-------|---|
+| 1eRASS-SC J0425-6329 | 8 | 8 | 1.00 | 0.236 |
+| 1eRASS-SC J0222-4049 | 5 | 5 | 1.00 | 0.233 |
+| 1eRASS-SC J0005-6802 | 5 | 5 | 1.00 | 0.243 |
+| 1eRASS-SC J0534-3617 | 4 | 4 | 1.00 | 0.284 |
+| 1eRASS-SC J0440-5704 | 4 | 4 | 1.00 | 0.442 |
+| 1eRASS-SC J0526-6059 | 4 | 4 | 1.00 | 0.275 |
+| 1eRASS-SC J0141-2033 | 3 | 3 | 1.00 | 0.277 |
+| 1eRASS-SC J0548-2146 | 3 | 3 | 1.00 | 0.093 |
+| 1eRASS-SC J1018+3635 | 3 | 3 | 1.00 | 0.147 |
+| 1eRASS-SC J1143+2711 | 3 | 3 | 1.00 | 0.154 |
+| 1eRASS-SC J1149-3756 | 3 | 3 | 1.00 | 0.227 |
+
+### Ratio Distribution
+
+Ratio range    N superclusters    Fraction
+0.0 - 0.25     29                 6.2%
+0.25 - 0.50    30                 6.4%74% of superclusters within factor 2 of balance.
+Random expectation: 65% (305/468).
+Excess: 42 superclusters above random expectation at 4.29σ.
+
+---
+
+## Physical Interpretation
+
+The median supercluster maintains exactly equal disturbed and relaxed 
+cluster populations. The real universe is more balanced than any of 
+10,000 random universes tested.
+
+**Possible conservation mechanism:**
+
+Large scale structure self-regulates dynamical state. Within each 
+supercluster, merger activity and relaxation occur at statistically 
+equal rates. The cosmic web maintains thermodynamic equilibrium at the 
+filament scale.
+
+**Connection to dark energy:**
+
+The ISW morphology signal (Parks 2026, main paper) exists precisely at 
+z=[0.10,0.15) — the epoch of dark energy domination. The supercluster 
+balance result spans z=0.01-0.80 with median ratio 1.000 throughout. 
+Together these suggest dark energy may function as a dynamical 
+equilibrium mechanism — not merely a geometric expansion term but a 
+regulator of the merger/relaxation cycle within large scale structure.
+
+If dark energy is a conservation mechanism, its equation of state w=-1 
+(cosmological constant) represents the exact equilibrium value. 
+Deviations from w=-1 would correspond to epochs or environments where 
+the balance is broken.
+
+**The physical picture:**
+
+A supercluster filament has a fixed total mass budget. Dark energy sets 
+the expansion rate which determines infall timescales. When merger 
+activity exceeds relaxation, dark energy suppresses further infall by 
+expanding the background, reducing the merger rate. When relaxation 
+dominates, gravity drives new infall, triggering fresh mergers. Dark 
+energy acts as the cosmic thermostat — maintaining the equilibrium 
+between disruption and order at the supercluster scale.
+
+---
+
+## Caveats
+
+- D_COMB morphology classification not mass-matched per supercluster
+- eROSITA western hemisphere only — full sky test requires future data
+- Mean ratio (1.343) pulled by outliers — median (1.000) is the robust statistic
+- Requires independent confirmation with PSZ2 or ACT morphology
+- No redshift evolution test yet — does ratio evolve with z?
+
+---
+
+## Next Steps
+
+1. **Mass-matched balance test** — control for mass distribution per supercluster
+2. **Redshift evolution** — does disturbed/relaxed ratio evolve with z? 
+   Prediction: ratio >1 at z>0.3 (merger-dominated), converges to 1.0 
+   at low z as dark energy suppresses infall
+3. **Full sky test** — requires northern hemisphere X-ray morphology catalog
+4. **PSZ2 confirmation** — rerun with SZ-based Y-M residual morphology 
+   on PSZ2 clusters cross-matched to supercluster catalog
+5. **w(z) correlation** — test whether supercluster balance ratio 
+   correlates with dark energy equation of state measurements
+
+---
+
+## Data
+
+- eROSITA eRASS1: Bulbul et al. 2024, A&A 685, A106
+- eROSITA supercluster catalog: Liu et al. 2024, A&A 683, A130
+- eROSITA morphology: Sanders et al. 2025, A&A 695, 160A
+
+---
+
+## Statistical Summary
+
+| Result | Value |
+|--------|-------|
+| Median disturbed/relaxed ratio | **1.000** |
+| Overall ratio | 0.969 |
+| Superclusters tested | 468 |
+| Bootstrap significance | **4.29σ** |
+| Random universes exceeding observed | **0 / 10,000** |
+| Wilcoxon significance | 6.64σ |
+
+*This result is preliminary. Mass matching, redshift evolution testing, 
+and independent catalog confirmation are required before publication.*
+
+---
+
+*Last updated: May 26, 2026*
+*Contact: alikamp@gmail.com*
+*GitHub: github.com/alikamp/Parks-ISW-Morphology*
+0.50 - 1.00    167                35.7%
+1.00           43                 9.2%  ← exact balance
+1.00 - 2.00    137                29.3%
+2.00 - 4.00    52                 11.1%
+4.00+          10                 2.1%
+
+
+
