@@ -283,12 +283,12 @@ The field has no preferred redshift — it is active wherever dark energy is loc
 ## Next Steps
 
 **Immediate:**
-1. Email Amber Hollinger (Amber.Hollinger@anu.edu.au) for Table B.1 — 37-void positions
+1. Email A.H. for Table B.1 — 37-void positions
 2. Send equilibrium field framework to F.H. — provides physical mechanism for z<0.03 anomaly
 3. Request CosmicFlows-4 void velocity profiles from Courtois group
 
 **Analysis:**
-4. Test prediction 1 with full Hollinger catalog and proper 3D SC mass
+4. Test prediction 1 with full H. catalog and proper 3D SC mass
 5. Cross-match PSZ2 disturbed clusters with void boundary positions
 6. Compute 2-point ISW cross-correlation function between void and SC positions
 
@@ -310,6 +310,10 @@ All tests performed June 13, 2026 using:
 - Hollinger & Courtois 2026 (arXiv:2606.13538, submitted June 11 2026)
 
 Code: https://github.com/alikamp/Parks-ISW-Morphology
+Author note: there is some over-reach here pertaining to the temporal fluidity of dark energy and there
+are some leaps connecting data points- nevertheless data seems to indicate or lean towards a dark energy field theoretic treatment
+and perhaps how particualr velocities can perturb and effect this field at all scales, or similarly different approximated variations
+thereof. 
 
 ---
 
